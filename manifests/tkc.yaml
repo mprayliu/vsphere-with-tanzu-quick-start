@@ -1,20 +1,20 @@
 apiVersion: run.tanzu.vmware.com/v1alpha1
 kind: TanzuKubernetesCluster
 metadata:
-  name: tkc-1
+  name: tkc-ray
 spec:
   distribution:
-    version: v1.18
+    version: v1.21
   topology:
     controlPlane:
-      class: guaranteed-small
+      class: best-effort-large
       count: 1
-      storageClass: kubernetes-demo-storage
+      storageClass: tkc
     workers:
-      class: guaranteed-small
-      count: 1
-      storageClass: kubernetes-demo-storage
+      class: best-effort-medium
+      count: 2
+      storageClass: tkc
   settings:
     storage:
-      classes: ["kubernetes-demo-storage"]              #Named PVC storage classes
-      defaultClass: kubernetes-demo-storage                     #Default PVC storage class
+      classes: ["tkc"]              #Named PVC storage classes
+      defaultClass: tkc                     #Default PVC storage class
