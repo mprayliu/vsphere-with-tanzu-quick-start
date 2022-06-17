@@ -1,20 +1,20 @@
 apiVersion: run.tanzu.vmware.com/v1alpha1
 kind: TanzuKubernetesCluster
 metadata:
-  name: tkc-ray
+  name: tkc-ray                  ## TanzuKubernetesCluster 名稱。 只能是字母數字和破折號
 spec:
   distribution:
-    version: v1.21
+    version: v1.21               ## TanzuKubernetesCluster 發行的版本
   topology:
     controlPlane:
-      class: best-effort-large
-      count: 1
-      storageClass: tkc
+      class: best-effort-large   ## 控制平面虛擬機資源大小
+      count: 1                   ## 控制平面虛擬機數量
+      storageClass: tkc          ## 控制平面儲存區原則
     workers:
-      class: best-effort-medium
-      count: 2
-      storageClass: tkc
+      class: best-effort-medium  ## 工作節點虛擬機資源大小
+      count: 2                   ## 工作節點虛擬機數量
+      storageClass: tkc          ## 工作節點儲存區原則
   settings:
     storage:
-      classes: ["tkc"]              #Named PVC storage classes
-      defaultClass: tkc                     #Default PVC storage class
+      classes: ["tkc"]           ## PVC 儲存區類別
+      defaultClass: tkc          ## 預設 PVC 儲存區類別       
